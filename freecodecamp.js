@@ -714,3 +714,37 @@ const bicycle = {
 // Only change code above this line
 bicycle.setGear(3);
 console.log(bicycle.gear);
+
+//=================================
+// Only change code below this line
+class Vegetable {
+    constructor(name) {
+        this.name = name;
+    }
+}
+// Only change code above this line
+
+const carrot = new Vegetable('carrot');
+console.log(carrot.name); // Should display 'carrot'
+
+//=================================
+// Only change code below this line
+class Thermostat {
+    constructor(f) {
+        this._t = f;
+    }
+
+    get temperature() {
+        return (5 / 9) * (this._t - 32);
+    }
+
+    set temperature(n) {
+        this._t = (n * 9.0) / 5 + 32;
+    }
+}
+// Only change code above this line
+
+const thermos = new Thermostat(76); // Setting in Fahrenheit scale
+let temp = thermos.temperature; // 24.44 in Celsius
+thermos.temperature = 26;
+temp = thermos.temperature; // 26 in Celsius
