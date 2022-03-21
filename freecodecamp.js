@@ -555,3 +555,44 @@ function checkScope() {
     return i;
 }
 
+//=================================
+const s = [5, 7, 2];
+function editInPlace() {
+    // Only change code below this line
+
+    s[0] = 2;
+    s[1] = 5;
+    s[2] = 7;
+    // Only change code above this line
+}
+editInPlace();
+
+//=================================
+function freezeObj() {
+    const MATH_CONSTANTS = {
+        PI: 3.14
+    };
+    // Only change code below this line
+    Object.freeze(MATH_CONSTANTS)
+
+    // Only change code above this line
+    try {
+        MATH_CONSTANTS.PI = 99;
+    } catch (ex) {
+        console.log(ex);
+    }
+    return MATH_CONSTANTS.PI;
+}
+const PI = freezeObj();
+
+//=================================
+const magic = () => {
+    return new Date();
+};
+
+//=================================
+const myConcat = (arr1, arr2) => {
+    return arr1.concat(arr2);
+};
+
+console.log(myConcat([1, 2], [3, 4, 5]));
