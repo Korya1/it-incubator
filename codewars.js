@@ -152,3 +152,34 @@ describe("Basic tests", () => {
     });
 });
 
+//=======================================
+
+/*Given a string, swap the case for each of the letters.
+
+    e.g. CodEwArs --> cODeWaRS
+
+Examples
+""           ->   ""
+"CodeWars"   ->   "cODEwARS"
+"abc"        ->   "ABC"
+"ABC"        ->   "abc"
+"123235"     ->   "123235"*/
+
+//=======================================
+
+function swap(str){
+
+    return str.split('').map(item => item === item.toUpperCase()
+        ? item.toLowerCase()
+        : item.toUpperCase()).join('');
+}
+
+describe("Tests", () => {
+    it("test", () => {
+        Test.assertEquals(swap('HelloWorld'), 'hELLOwORLD');
+        Test.assertEquals(swap('CodeWars'), 'cODEwARS');
+    });
+});
+
+//=======================================
+
