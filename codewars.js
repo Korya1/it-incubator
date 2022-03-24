@@ -1,6 +1,7 @@
 //=======================================
 
-// Write a function that takes a string and an an integer n as parameters and returns a list of all words that are longer than n.
+// Write a function that takes a string and an an integer n as parameters and returns a list of all words that are
+// longer than n.
 
 // Example:
 
@@ -27,14 +28,16 @@ const assert = chai.assert;
 
 describe("Test Cases", function () {
     it("basic example", function () {
-        assert.deepEqual(filterLongWords("The quick brown fox jumps over the lazy dog", 4), ['quick', 'brown', 'jumps']);
+        assert.deepEqual(filterLongWords("The quick brown fox jumps over the lazy dog", 4), ['quick', 'brown'
+            , 'jumps']);
     });
 });
 
 
 //=======================================
 
-// Create a function that converts US dollars (USD) to Chinese Yuan (CNY) . The input is the amount of USD as an integer
+// Create a function that converts US dollars (USD) to Chinese Yuan (CNY) . The input is the amount of USD as an
+// integer
 // , and the output should be a string that states the amount of Yuan followed by 'Chinese Yuan'
 
 // Examples (Input -> Output)
@@ -178,6 +181,43 @@ describe("Tests", () => {
     it("test", () => {
         Test.assertEquals(swap('HelloWorld'), 'hELLOwORLD');
         Test.assertEquals(swap('CodeWars'), 'cODEwARS');
+    });
+});
+
+//=======================================
+
+/*Create the function that converts a given string into an md5 hash. The return value should be encoded in hexadecimal.
+
+    Remember that you can include the builtin require() function to include external modules (you're not expected to
+    implement MD5 hash algorithm yourself, there are many modules that can do that for you).
+
+If you're not familiar with modules, see this kata.
+
+NodeJS documentation here.
+
+    Code Examples
+passHash("password") // --> "5f4dcc3b5aa765d61d8327deb882cf99"
+passHash("abc123") // --> "e99a18c428cb38d5f260853678922e03"*/
+
+//=======================================
+
+var crypto = require('crypto');
+function passHash(str) {
+    var md5 = crypto.createHash('md5');
+    md5.update(str, 'utf8');
+    return md5.digest('hex');
+}
+
+describe("Tests", () => {
+    it("test", () => {
+        var tests = [
+            ['password', '5f4dcc3b5aa765d61d8327deb882cf99'],
+            ['abc123', 'e99a18c428cb38d5f260853678922e03']
+        ]
+
+        for (var i = 0; i < tests.length; i++) {
+            Test.assertEquals(passHash(tests[i][0]), tests[i][1])
+        }
     });
 });
 
