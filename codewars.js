@@ -170,7 +170,7 @@ Examples
 
 //=======================================
 
-function swap(str){
+function swap(str) {
 
     return str.split('').map(item => item === item.toUpperCase()
         ? item.toLowerCase()
@@ -202,6 +202,7 @@ passHash("abc123") // --> "e99a18c428cb38d5f260853678922e03"*/
 //=======================================
 
 var crypto = require('crypto');
+
 function passHash(str) {
     var md5 = crypto.createHash('md5');
     md5.update(str, 'utf8');
@@ -237,10 +238,10 @@ function spacify(str) {
 
 const {assert} = require("chai");
 
-describe("spacify", function() {
-    it("basic tests", function() {
-        assert.equal(spacify('hello world'),'h e l l o   w o r l d');
-        assert.equal(spacify('12345'),'1 2 3 4 5');
+describe("spacify", function () {
+    it("basic tests", function () {
+        assert.equal(spacify('hello world'), 'h e l l o   w o r l d');
+        assert.equal(spacify('12345'), '1 2 3 4 5');
     });
 });
 
@@ -268,7 +269,7 @@ function maxDiff(list) {
     return 0;
 };
 
-describe('Basic tests', function() {
+describe('Basic tests', function () {
 
     Test.assertEquals(maxDiff([0, 1, 2, 3, 4, 5, 6]), 6);
     Test.assertEquals(maxDiff([-0, 1, 2, -3, 4, 5, -6]), 11);
@@ -277,3 +278,76 @@ describe('Basic tests', function() {
     Test.assertEquals(maxDiff([]), 0);
 
 });
+
+//=======================================
+
+/*Dot Calculator
+You have to write a calculator that receives strings for input. The dots will represent the number in the equation.
+There will be dots on one side, an operator, and dots again after the operator. The dots and the operator will be
+separated by one space.
+    Here are the following valid operators :
+    + Addition
+    - Subtraction
+    * Multiplication
+   // Integer Division
+
+Your Work (Task)
+You'll have to return a string that contains dots, as many the equation returns. If the result is 0, return the empty
+string. When it comes to subtraction, the first number will always be greater than or equal to the second number.
+
+Examples (Input => Output)
+* "..... + ..............." => "...................."
+* "..... - ..."             => ".."
+* "..... - ."               => "...."
+* "..... * ..."             => "..............."
+* "..... * .."              => ".........."
+* "..... // .."             => ".."
+* "..... // ."              => "....."
+* ". // .."                 => ""
+* ".. - .."                 => ""*/
+
+//=======================================
+
+function dotCalculator(equation) {
+
+    let separate = equation.split(" ");
+    let count = 0;
+
+
+    switch (separate[1]) {
+        case '+':
+            count = separate[0].length + separate[2].length;
+            break;
+        case '-':
+            count = separate[0].length - separate[2].length;
+            break;
+        case '*':
+            count = separate[0].length * separate[2].length;
+            break;
+        case '//':
+            count = separate[0].length / separate[2].length;
+            break;
+    }
+
+    return '.'.repeat(count);
+
+    const strictEqual = require("chai").assert.strictEqual;
+
+    function doTest(string, expected) {
+        const actual = dotCalculator(string);
+        strictEqual(actual, expected, `for string:\n"${string}"\n`);
+    }
+
+    describe("Tests suite", function () {
+        it("sample tests", function () {
+            doTest("..... + ...............", "....................");
+            doTest("..... - ...", "..");
+            doTest("..... - .", "....");
+            doTest("..... * ...", "...............");
+            doTest("..... * ..", "..........");
+            doTest("..... // ..", "..");
+            doTest("..... // .", ".....");
+            doTest(". // ..", "");
+            doTest(". - .", "");
+        });
+    });
