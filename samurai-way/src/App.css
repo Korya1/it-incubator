@@ -1,8 +1,11 @@
-.App {
-  padding: 30px;
-  display: flex;
-}
+.app_wrapper {
+    margin: 0 auto;
+    width: 1200px;
+    display: grid;
 
-.App > div {
-  margin-right: 50px;
+    grid-template-areas:
+    "header header"
+    "nav content";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
 }

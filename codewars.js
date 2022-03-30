@@ -385,3 +385,57 @@ function dotCalculator(equation) {
         for (const [input, expected] of tests)
             it(JSON.stringify(input), () => assert.strictEqual(explode(input), expected));
     });
+
+//=======================================
+    /*
+        You have a two-dimensional list in the following format:
+
+            data = [[2, 5], [3, 4], [8, 7]]
+        Each sub-list contains two items, and each item in the sub-lists is an integer.
+
+            Write a function process_data()/processData() that processes each sub-list like so:
+
+            [2, 5] --> 2 - 5 --> -3
+                [3, 4] --> 3 - 4 --> -1
+                [8, 7] --> 8 - 7 --> 1
+        and then returns the product of all the processed sub-lists: -3 * -1 * 1 --> 3.
+
+        For input, you can trust that neither the main list nor the sublists will be empty.*/
+
+//=======================================
+
+    function processData(data) {
+        return data.reduce((a, [b, c]) => a * (b - c), 1);
+    }
+
+    const chai = require("chai");
+    const assert = chai.assert;
+
+    describe("Fixed tests", function () {
+        it("Basic tests", function () {
+            assert.strictEqual(processData([[2, 5], [3, 4], [8, 7]]), 3, `For [[2, 5], [3, 4], [8, 7]]`);
+            assert.strictEqual(processData([[2, 9], [2, 4], [7, 5]]), 28, `For [[2, 9], [2, 4], [7, 5]]`);
+        });
+    });
+
+//=======================================
+    // In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+    //
+    //     Example
+    // filter_list([1,2,'a','b']) == [1,2]
+    // filter_list([1,'a','b',0,15]) == [1,0,15]
+    // filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
+//=======================================
+
+    function filter_list(l) {
+        return l.filter(n => (typeof n == "string") ? false : true);
+    };
+
+    const assert = require('chai').assert;
+    describe("Tests", () => {
+        it("test", () => {
+            assert.deepEqual(filter_list([1,2,'a','b']),[1,2], 'For input [1,2,"a","b"]');
+            assert.deepEqual(filter_list([1,'a','b',0,15]),[1,0,15], 'For input [1,"a","b",0,15]');
+            assert.deepEqual(filter_list([1,2,'aasf','1','123',123]),[1,2,123], 'For input [1,2,"aasf","1","123",123]');
+        });
+    });
